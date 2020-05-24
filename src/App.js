@@ -55,17 +55,20 @@ class App extends Component {
       return (
         <div className="main">
           <div>
-            <h2>RASTGELE (a simple React App)</h2>
+            <h2>
+              Kişiler<br></br>(a simple React App)
+            </h2>
           </div>
           <div className="info">
             <button
+              className="pagin"
               style={{
                 display: this.state.idx === 0 ? "none" : null,
                 visibility: this.state.idx === 1 ? "hidden" : null,
               }}
               onClick={this.prevUser}
             >
-              Önceki
+              &laquo;Önceki
             </button>
             <Card
               people={this.state.people}
@@ -75,18 +78,19 @@ class App extends Component {
               removeCharacter={this.removeCharacter}
             />
             <button
+              className="pagin"
               style={{
                 display: this.state.idx === 0 ? "none" : null,
                 visibility: this.state.idx === 5 ? "hidden" : null,
               }}
               onClick={this.nextUser}
             >
-              Sonraki
+              Sonraki&raquo;
             </button>
           </div>
           <br></br>
           <button
-            style={{ width: "20%", alignSelf: "center" }}
+            style={{ width: "25%", alignSelf: "center" }}
             onClick={this.pageChanger}
           >
             Yeni Kişi Ekle
@@ -94,7 +98,7 @@ class App extends Component {
           <br></br>
           <button
             style={{
-              width: "20%",
+              width: "25%",
               alignSelf: "center",
               display: this.state.idx === 0 ? "none" : null,
               backgroundColor: "gray",
@@ -106,7 +110,7 @@ class App extends Component {
           <br></br>
           <button
             style={{
-              width: "20%",
+              width: "25%",
               alignSelf: "center",
               display: this.state.idx === 0 ? null : "none",
             }}
@@ -121,12 +125,12 @@ class App extends Component {
       return (
         <div className="main">
           <div>
-            <h2>RASTGELE</h2>
+            <h2>Kişiler</h2>
           </div>
           <Form handlesubmit={this.handleSubmit} />
           <br></br>
           <button
-            style={{ width: "20%", backgroundColor: "gray" }}
+            style={{ width: "25%", backgroundColor: "gray" }}
             onClick={this.pageChanger}
           >
             Geri Dön
