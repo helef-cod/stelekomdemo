@@ -61,6 +61,7 @@ h2 {
 }
 .pagin {
   background-color: teal;
+  min-width: 70px;
 }
 
 input[type="text"],
