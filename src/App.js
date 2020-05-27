@@ -5,20 +5,26 @@ import Form from "./Form.js";
 class App extends Component {
   state = {
     compName: true,
+    error: null,
+    loading: false,
     people: [],
     idx: 1,
   };
 
   componentDidMount() {
-    this.getUser();
-  }
-
-  getUser() {
     fetch("https://randomuser.me/api/?results=5")
       .then((result) => result.json())
-      .then((result) => {
-        this.setState({ people: result.results });
-      });
+      .then(
+        (result) => {
+          this.setState({ loading: true, people: result.results });
+        },
+        (error) => {
+          this.setState({
+            loading: true,
+            error,
+          });
+        }
+      );
   }
   nextUser = () => {
     this.setState({ idx: this.state.idx + 1 });
@@ -71,6 +77,8 @@ class App extends Component {
               &laquo;Önceki
             </button>
             <Card
+              error={this.state.error}
+              loading={this.state.loading}
               people={this.state.people}
               idx={this.state.idx}
               prevUser={this.prevUser}

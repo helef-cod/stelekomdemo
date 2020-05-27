@@ -27,44 +27,59 @@ class Card extends Component {
       default:
         className = "card1";
     }
-
-    return (
-      <div className="app">
-        <div className="cards">
-          {this.props.people.map((person, index) => (
-            <div className={className} key={uuidv4()}>
-              <img
-                alt="Profile"
-                src={
-                  person.picture
-                    ? person.picture.large
-                    : "https://api.adorable.io/avatars/130/abott@adorable.png"
-                }
-              ></img>
-              <h3>
-                AD-SOYAD: {person.name.first} {person.name.last}
-              </h3>
-
-              <h3>TELEFON: {person.phone}</h3>
-              <h3>EPOSTA: {person.email}</h3>
-
-              <Table
-                fname={person.name.first}
-                lname={person.name.last}
-                phone={person.phone}
-                email={person.email}
-              />
-              <button
-                className="deletebutton"
-                onClick={() => this.props.removeCharacter(index)}
-              >
-                Sil !
-              </button>
-            </div>
-          ))}
+    if (this.props.error) {
+      return (
+        <div>
+          Karşıdan kimse yüklenemedi<br></br> ama kendiniz kişi
+          kaydedebilirsiniz.
         </div>
-      </div>
-    );
+      );
+    }
+    if (!this.props.loading) {
+      return (
+        <div>
+          <b>Yükleniyor...</b>
+        </div>
+      );
+    } else {
+      return (
+        <div className="app">
+          <div className="cards">
+            {this.props.people.map((person, index) => (
+              <div className={className} key={uuidv4()}>
+                <img
+                  alt="Profile"
+                  src={
+                    person.picture
+                      ? person.picture.large
+                      : "https://api.adorable.io/avatars/130/abott@adorable.png"
+                  }
+                ></img>
+                <h3>
+                  AD-SOYAD: {person.name.first} {person.name.last}
+                </h3>
+
+                <h3>TELEFON: {person.phone}</h3>
+                <h3>EPOSTA: {person.email}</h3>
+
+                <Table
+                  fname={person.name.first}
+                  lname={person.name.last}
+                  phone={person.phone}
+                  email={person.email}
+                />
+                <button
+                  className="deletebutton"
+                  onClick={() => this.props.removeCharacter(index)}
+                >
+                  Sil !
+                </button>
+              </div>
+            ))}
+          </div>
+        </div>
+      );
+    }
   }
 }
 export default Card;
