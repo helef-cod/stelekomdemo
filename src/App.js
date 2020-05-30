@@ -34,7 +34,7 @@ class App extends Component {
   };
 
   allUsers = () => {
-    this.setState({ idx: 0 });
+    this.setState({ idx: -1 });
   };
 
   returnCard = () => {
@@ -57,7 +57,8 @@ class App extends Component {
   };
 
   render() {
-    if (this.state.compName) {
+    const { compName, error, loading, people, idx } = this.state;
+    if (compName) {
       return (
         <div className="main">
           <div>
@@ -69,18 +70,19 @@ class App extends Component {
             <button
               className="pagin"
               style={{
-                display: this.state.idx === 0 ? "none" : null,
-                visibility: this.state.idx === 1 ? "hidden" : null,
+                visibility: idx === 0 ? "hidden" : null,
+                display: idx === -1 ? "none" : null,
               }}
               onClick={this.prevUser}
             >
               &laquo;Önceki
             </button>
+
             <Card
-              error={this.state.error}
-              loading={this.state.loading}
-              people={this.state.people}
-              idx={this.state.idx}
+              error={error}
+              loading={loading}
+              people={people}
+              idx={idx}
               prevUser={this.prevUser}
               nextUser={this.prevUser}
               removeCharacter={this.removeCharacter}
@@ -88,8 +90,8 @@ class App extends Component {
             <button
               className="pagin"
               style={{
-                display: this.state.idx === 0 ? "none" : null,
-                visibility: this.state.idx === 5 ? "hidden" : null,
+                visibility: idx === people.length - 1 ? "hidden" : null,
+                display: idx === -1 ? "none" : null,
               }}
               onClick={this.nextUser}
             >
@@ -108,7 +110,7 @@ class App extends Component {
             style={{
               width: "25%",
               alignSelf: "center",
-              display: this.state.idx === 0 ? "none" : null,
+              display: idx === -1 ? "none" : null,
               backgroundColor: "gray",
             }}
             onClick={this.allUsers}
@@ -120,7 +122,7 @@ class App extends Component {
             style={{
               width: "25%",
               alignSelf: "center",
-              display: this.state.idx === 0 ? null : "none",
+              display: idx === -1 ? null : "none",
             }}
             onClick={this.returnCard}
           >
@@ -129,7 +131,7 @@ class App extends Component {
         </div>
       );
     }
-    if (!this.state.compName) {
+    if (!compName) {
       return (
         <div className="main">
           <div>
@@ -138,7 +140,7 @@ class App extends Component {
           <Form handlesubmit={this.handleSubmit} />
           <br></br>
           <button
-            style={{ width: "25%", backgroundColor: "gray" }}
+            style={{ width: "20%", backgroundColor: "gray" }}
             onClick={this.pageChanger}
           >
             Geri Dön

@@ -52,6 +52,8 @@ class Form extends Component {
       name: { first, last },
       phone,
       email,
+      nameError,
+      phoneError,
     } = this.state;
     return (
       <div className="card">
@@ -67,7 +69,7 @@ class Form extends Component {
             value={first}
             onChange={this.nameChange}
           />
-          <div style={{ color: "red" }}>{this.state.nameError}</div>
+          <div style={{ color: "red" }}>{nameError}</div>
           <br></br>
           SOYAD:
           <input
@@ -84,7 +86,7 @@ class Form extends Component {
             value={phone}
             onChange={this.valueChange}
           />
-          <div style={{ color: "red" }}>{this.state.phoneError}</div>
+          <div style={{ color: "red" }}>{phoneError}</div>
           <br></br>
           EPOSTA:{" "}
           <input

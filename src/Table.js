@@ -2,6 +2,7 @@ import React, { Component } from "react";
 
 class Table extends Component {
   render() {
+    const { fname, lname, phone, email } = this.props;
     return (
       <div>
         <table>
@@ -15,10 +16,10 @@ class Table extends Component {
           </thead>
           <tbody>
             <tr>
-              <td>{this.props.fname}</td>
-              <td>{this.props.lname}</td>
-              <td>{this.props.phone}</td>
-              <td>{this.props.email}</td>
+              <td>{fname}</td>
+              <td>{lname}</td>
+              <td>{phone}</td>
+              <td>{email}</td>
             </tr>
           </tbody>
         </table>

@@ -11,11 +11,18 @@ td {
   border-collapse: collapse;
   padding: 4px;
 }
+
+.cards {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
 .card {
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
+  align-items: center;
 }
 
 h2 {
@@ -30,14 +37,14 @@ h2 {
 .main {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
 }
 .info {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
 }
 @media screen and (max-width: 500px) {
   body {
@@ -97,46 +104,4 @@ input[type="button"]:hover {
 }
 img {
   border: 1px solid black;
-}
-.card0 {
-  display: flex;
-  flex-direction: column;
-
-  align-items: center;
-}
-
-.card1 {
-  text-align: center;
-  display: none;
-}
-.card1:first-child {
-  display: inherit;
-}
-.card2 {
-  text-align: center;
-  display: none;
-}
-.card2:nth-child(2) {
-  display: inherit;
-}
-.card3 {
-  text-align: center;
-  display: none;
-}
-.card3:nth-child(3) {
-  display: inherit;
-}
-.card4 {
-  text-align: center;
-  display: none;
-}
-.card4:nth-child(4) {
-  display: inherit;
-}
-.card5 {
-  text-align: center;
-  display: none;
-}
-.card5:nth-child(5) {
-  display: inherit;
 }
